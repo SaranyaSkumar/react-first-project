@@ -1,0 +1,14 @@
+.button {
+    background-color: #e7f7ee;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    font-family: system-ui;
+    font-size: 17px;
+}
+
+.main-button{
+    margin-top: 1rem;
+    margin-left: 8rem;
+}

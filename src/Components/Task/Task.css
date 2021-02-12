@@ -1,0 +1,26 @@
+.task {
+    background-color: #e7f7ee;
+    padding: 7px 21px;
+    width: 70%;
+    margin-bottom: 6px;
+    border-radius: 6px;
+}
+
+.task-list{
+    font-family: system-ui;
+    font-size: 18px;
+}
+
+.timeline {
+    font-style: italic;
+}
+
+.close-task{
+    float: right;
+    color: red;
+    cursor: pointer;
+}
+
+.task.reminder {
+    border-left: 10px solid green;
+}

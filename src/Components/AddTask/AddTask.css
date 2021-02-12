@@ -1,0 +1,36 @@
+.add-form{
+    margin: auto;
+    width: 50%;
+}
+
+.task-form {
+    border: 5px solid #a0ddbb;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+.element {
+    padding: 1rem;
+}
+
+.form-label{
+    padding-right: 10px;
+}
+
+.save-btn {
+    width: 100%;
+    background-color: #e7f7ee;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.input-area {
+    margin-top: 2px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    height: 30px;
+    width: 80%;
+}

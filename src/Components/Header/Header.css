@@ -1,0 +1,10 @@
+.header {
+    padding: 3rem;
+    background-color: #a0ddbb;
+    height: 5rem;
+    color: black;
+}
+
+.header-text-area {
+    display: flex;
+}
