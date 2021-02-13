@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import classes from './App.css';
-import Person from '../Components/Persons/Person/Person'
 import React, {Component} from 'react';
 import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';

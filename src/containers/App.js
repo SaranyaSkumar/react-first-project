@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
 import classes from './App.css';
-import Person from '../Components/Persons/Person/Person'
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Main from '../Components/Main/Main';
 
 const App = () => {

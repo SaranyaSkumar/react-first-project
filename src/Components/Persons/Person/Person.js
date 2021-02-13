@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Person.css';
-import styled from 'styled-components'
 
 class Person extends Component {
     render() {
