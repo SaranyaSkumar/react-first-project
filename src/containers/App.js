@@ -3,6 +3,8 @@ import classes from './App.css';
 import Person from '../Components/Persons/Person/Person'
 import React, { Component, useState, useEffect } from 'react';
 import Main from '../Components/Main/Main';
+import writeJsonFile from 'write-json-file'
+// import task_set from '../../public/taskSet.json'
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -10,23 +12,26 @@ const App = () => {
   useEffect(() => {
     const getTasks = async () => {
       const server_tasks = await fetchTasks();
-      setTasks(server_tasks)
+      console.log("server_tasks",server_tasks)
+      setTasks(server_tasks.tasks)
     }
     getTasks();
   }, [])
 
   //fetch tasks
   const fetchTasks = async () => {
-    const response = await fetch('http://localhost:5000/tasks');
+    const response = await fetch('http://localhost:3000/taskSet.json');
     const final_data = await response.json();
     return final_data;
   }
 
   //fetch task
   const fetchTask = async (id) => {
-    const response = await fetch(`http://localhost:5000/tasks/${id}`);
-    const final_data = await response.json();
-    return final_data;
+    const server_tasks = await fetchTasks();
+    let single_task= server_tasks.tasks.find(item => item.id === id);
+    // const response = await fetch(`http://localhost:5000/tasks/${id}`);
+    // const final_data = await response.json();
+    return single_task;
   }
 
   const [showAddTask, setShowAddTask] = useState(false);
@@ -39,6 +44,17 @@ const App = () => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  //update task
+  const updateTaskbyId= async(task) => {
+    const server_tasks = await fetchTasks();
+    server_tasks.tasks.find((item, index) => {
+      if(item.id === task.id){
+        server_tasks.tasks.splice(index, 1);
+        server_tasks.tasks.push(task);
+        return server_tasks;
+    }});
+  }
+
   //Reminder
   const reminder = async (id) => {
     const getTask = await fetchTask(id);
@@ -46,20 +62,23 @@ const App = () => {
       ...getTask,
       reminder: !getTask.reminder
     };
-    const response = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(updatedTask)
-    })
+    console.log("getTask",updatedTask);
+    const updadted_taskList= await updateTaskbyId(updatedTask);
+    await writeJsonFile('./../public/taskSet.jso', updadted_taskList);
+    // const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-type': 'application/jso n'
+    //   },
+    //   body: JSON.stringify(updatedTask)
+    // })
 
-    const data = await response.json();
+    // const data = await response.json();
 
-    setTasks(tasks.map((task) =>
-      task.id === id
-        ? { ...task, reminder: !data.reminder }
-        : task))
+    // setTasks(tasks.map((task) =>
+    //   task.id === id
+    //     ? { ...task, reminder: !data.reminder }
+    //     : task))
   }
 
   //add task

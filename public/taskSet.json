@@ -1,0 +1,28 @@
+{
+    "tasks": [
+      {
+        "id": 1,
+        "text": "Learn react",
+        "timeline": "Today",
+        "reminder": false
+      },
+      {
+        "id": 2,
+        "text": "Complete a sample project",
+        "timeline": "Tomorrow",
+        "reminder": true
+      },
+      {
+        "text": "Add more tasks",
+        "timeline": "soon",
+        "reminder": false,
+        "id": 3
+      },
+      {
+        "text": "add more features",
+        "timeline": "14th feb, 2020 8.30PM",
+        "reminder": false,
+        "id": 4
+      }
+    ]
+  }
