@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
-import './AddTask.css'
+import './UpdateTask.css'
 
-const AddTask = (props) => {
-    const [task, setText] = useState('')
-    const [description, setSummary] = useState('')
-    const [timeline, setTimeline] = useState('')
+const UpdateTask = (props) => {
+    console.log("props", props)
+    const [task, setText] = useState(props.taskToShow.task)
+    const [description, setSummary] = useState(props.taskToShow.description)
+    const [timeline, setTimeline] = useState(props.taskToShow.timeline)
+    const [id, setId] = useState(props.taskToShow.id)
     const [reminder, setReminder] = useState(false)
 
     const onSubmit = (e) =>{
@@ -15,10 +17,11 @@ const AddTask = (props) => {
             return;
         }
         
-        props.onAdd({task,description, timeline, reminder});
+        props.onUpdate({task,description, timeline, reminder,id});
         setText('');
         setSummary('');
         setTimeline('');
+        setId('')
         setReminder(false);
     }
 
@@ -52,4 +55,4 @@ const AddTask = (props) => {
     )
 }
 
-export default AddTask
+export default UpdateTask

@@ -7,6 +7,10 @@ const Manager = (props) => {
         <div className='manager'>
             <Tasks tasks={props.tasks} 
             onDelete={props.onDelete}
+            onUpdate={props.setShowUpdateTask}
+            onUpdatetask={props.onUpdate}
+            showUpdateTask={props.showUpdateTask}
+            setShowUpdateTask={props.setShowUpdateTask}
             onToggle={props.onToggle}/>
         </div>
     )

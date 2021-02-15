@@ -4,6 +4,7 @@
     width: 70%;
     margin-bottom: 6px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .task-list{
@@ -23,4 +24,49 @@
 
 .task.reminder {
     border-left: 10px solid green;
+}
+
+.task-right{
+    float: right;
+    display: flex;
+}
+
+.dropdown{
+    width: 93px;
+    font-family: monospace !important;
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 23px;
+    background-color: white;
+    border: none;
+    width: 8rem;
+    margin-top: 20%;
+}
+
+.critical {
+    background-color: #f53721ab !important;
+}
+
+.high {
+    background-color: #fa807278 !important;
+}
+
+.medium {
+    background-color: #ff980078 !important;
+}
+
+.low {
+    background-color: #ffeb3ba1 !important;
+}
+
+.option{
+    background-color: white;
+}
+
+.add-to-calender {
+    margin-left: 1rem;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 14px;
+    color: teal;
 }
