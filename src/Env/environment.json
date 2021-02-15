@@ -1,3 +1,3 @@
 {
-    "baseUrl":"http://localhost:4000"
+    "baseUrl":"https://task-manager-react-app.herokuapp.com"
 }

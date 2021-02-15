@@ -2,6 +2,7 @@
 import classes from './App.css';
 import React, { useState, useEffect } from 'react';
 import Main from '../Components/Main/Main';
+import env from '../Env/environment.json';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,7 +18,7 @@ const App = () => {
 
   //fetch tasks
   const fetchTasks = async () => {
-    const response = await fetch('http://localhost:4000/tasks/get/tasks/all');
+    const response = await fetch(env.baseUrl+'/tasks/get/tasks/all');
     const final_data = await response.json();
     if(final_data && final_data.data){
       return final_data.data;
@@ -26,7 +27,7 @@ const App = () => {
 
   //fetch task
   const fetchTask = async (_id) => {
-    const response = await fetch(`http://localhost:5000/tasks/${_id}`);
+    const response = await fetch(`${env.baseUrl}/tasks/${_id}`);
     const final_data = await response.json();
     return final_data;
   }
@@ -36,7 +37,7 @@ const App = () => {
 
   //delete task
   const deleteTask = async (_id) => {
-    await fetch(`http://localhost:4000/tasks/disable/tasks`, {
+    await fetch(`${env.baseUrl}/tasks/disable/tasks`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -53,7 +54,7 @@ const App = () => {
       ...getTask,
       reminder: !getTask.reminder
     };
-    const response = await fetch(`http://localhost:5000/tasks/${_id}`, {
+    const response = await fetch(`${env.baseUrl}/tasks/${_id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
@@ -71,7 +72,7 @@ const App = () => {
 
   //add task
   const addTask = async (task) => {
-    const response = await fetch('http://localhost:4000/tasks/create/tasks', {
+    const response = await fetch(env.baseUrl+'/tasks/create/tasks', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -89,7 +90,7 @@ const App = () => {
   //update Task
   const updateTask = async (task) => {
     console.log("task",task)
-    const response = await fetch('http://localhost:4000/tasks/update/tasks', {
+    const response = await fetch(env.baseUrl+ '/tasks/update/tasks', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
