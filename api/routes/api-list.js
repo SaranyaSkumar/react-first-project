@@ -1,6 +1,6 @@
 var express = require('express');
 var router= express.Router();
-const tasks= require('../database/models/tasks');
+// const tasks= require('../database/models/tasks');
 const Task= require('../mongodb/models/tasks');
 
 router.get('/get/tasks/all', async function(req, res, next){
