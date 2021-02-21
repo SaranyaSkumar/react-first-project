@@ -1,12 +1,12 @@
 .button {
-    background-color: black;
+    background-color: white;
     height: 40px;
     width: 100px;
     border-radius: 10px;
     border: none;
     font-family: system-ui;
     font-size: 17px;
-    color: #a0ddbb;
+    color: black;
     cursor: pointer;
 }
 

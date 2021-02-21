@@ -1,0 +1,11 @@
+.main-login-section{
+    margin-top: 7%;
+    margin-left: 12%;
+    /* border: 2px solid rgb(88, 126, 50); */
+    width: 60%;
+    height: 30rem;
+}
+
+.to-continue{
+    font-size: 20px;
+}

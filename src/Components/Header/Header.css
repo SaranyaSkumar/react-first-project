@@ -1,6 +1,6 @@
 .header {
     padding: 3rem;
-    background-color: #a0ddbb;
+    /* background-color: #a0ddbb; */
     height: 5rem;
     color: black;
 }
@@ -12,4 +12,21 @@
 .nav-list{
     float: right;
     display: flex;
+}
+
+.logout-section{
+    float: right;
+}
+
+.title{
+    width: 15rem;
+    font-size: 25px;
+    font-family: system-ui;
+}
+
+.name{
+    font-family: system-ui;
+    font-size: 17px;
+    color: black;
+    margin-top: 8px;
 }

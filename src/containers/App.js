@@ -2,6 +2,7 @@
 import classes from './App.css';
 import React, { useState, useEffect } from 'react';
 import Main from '../Components/Main/Main';
+import MainLogin from '../Components/MainLogin/MainLogin';
 import env from '../Env/environment.json';
 
 const App = () => {
@@ -9,6 +10,11 @@ const App = () => {
   const [task, setTask] = useState();
 
   useEffect(() => {
+    if(localStorage.getItem('user')){
+      showLoginPage(true);
+    }else{
+      showLoginPage(false);
+    }
     const getTasks = async () => {
       const server_tasks = await fetchTasks();
       setTasks(server_tasks)
@@ -34,6 +40,7 @@ const App = () => {
 
   const [showAddTask, setShowAddTask] = useState(false);
   const [showUpdateTask, setShowUpdateTask1] = useState(false);
+  const [userLogin, showLoginPage] = useState(false);
 
   //delete task
   const deleteTask = async (_id) => {
@@ -115,8 +122,50 @@ const App = () => {
     setShowAddTask(false);
   }
 
+  const isLoggedIn= () => {
+    let user= localStorage.getItem('user');
+    if(user){
+      showLoginPage(true);
+    }else{
+      showLoginPage(false);
+    }
+  }
+
+  const getUser = async (data) => {
+    const response = await fetch(env.baseUrl+'/users/get/byEmail', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    const user_data = await response.json();
+    return user_data;
+  }
+
+  const signIn= async() => {
+    
+  }
+
+  const signUp= () => {
+    console.log("signup")
+  }
+
+  const createUser = async(data) => {
+    let user= await getUser(data);
+    if(user && user.hasOwnProperty('message') && user.message=='success'){
+      if(user.data && user.data.length>0){
+        signIn();
+      }else{
+        signUp();
+      }
+    }
+  }
+
+
   return (
-    <div className={classes.App}>
+    <div className='home'>
+      {userLogin? <div className={classes.App}>
       <Main tasks={tasks}
         onDelete={deleteTask}
         onToggle={reminder}
@@ -128,7 +177,10 @@ const App = () => {
         showAddTask={showAddTask}
         goBackToDasboard={redirectToMainPage}
         setShowAddTask={setShowAddTask} />
-
+      </div>: 
+      <MainLogin isLoggedIn={isLoggedIn}
+      />}
+      
     </div>
   );
 }

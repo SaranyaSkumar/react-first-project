@@ -21,7 +21,7 @@ const Task = (props) => {
                 <p className='task-list' onDoubleClick={() => props.setShowUpdateTask([props.task])}>
                     {props.task.task}
                     <span className='task-right'>
-                        <select value={props.task.priority}
+                        <select value={props.task.priority} 
                             className={`dropdown ${props.task.priority}`}
                             onChange={handleChange}>
                             <option className='option' value="" disabled selected>Set Priority</option>

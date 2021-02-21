@@ -5,6 +5,7 @@ import './Manager.css'
 const Manager = (props) => {
     return (
         <div className='manager'>
+            {/* <div className='welcome-text'>Welcome {JSON.parse(localStorage.getItem('user')).name}</div> */}
             <Tasks tasks={props.tasks} 
             onDelete={props.onDelete}
             onUpdate={props.setShowUpdateTask}
