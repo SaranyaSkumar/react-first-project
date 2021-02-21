@@ -2,11 +2,6 @@ import React from 'react'
 import './MainLogin.css'
 import { Container, Row, Col } from 'react-grid-system';
 import ButtonArea from '../ButtonArea/ButtonArea';
-import ImageArea from '../ImageArea/ImageArea';
-import todoimg from '../../assets/todo.png'
-const signUp = (e) => {
-    console.log("MainLogin")
-  }
 
 function MainLogin(props) {
     return (

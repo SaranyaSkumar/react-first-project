@@ -131,36 +131,36 @@ const App = () => {
     }
   }
 
-  const getUser = async (data) => {
-    const response = await fetch(env.baseUrl+'/users/get/byEmail', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-    const user_data = await response.json();
-    return user_data;
-  }
+  // const getUser = async (data) => {
+  //   const response = await fetch(env.baseUrl+'/users/get/byEmail', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data)
+  //   });
+  //   const user_data = await response.json();
+  //   return user_data;
+  // }
 
-  const signIn= async() => {
+  // const signIn= async() => {
     
-  }
+  // }
 
-  const signUp= () => {
-    console.log("signup")
-  }
+  // const signUp= () => {
+  //   console.log("signup")
+  // }
 
-  const createUser = async(data) => {
-    let user= await getUser(data);
-    if(user && user.hasOwnProperty('message') && user.message=='success'){
-      if(user.data && user.data.length>0){
-        signIn();
-      }else{
-        signUp();
-      }
-    }
-  }
+  // const createUser = async(data) => {
+  //   let user= await getUser(data);
+  //   if(user && user.hasOwnProperty('message') && user.message=='success'){
+  //     if(user.data && user.data.length>0){
+  //       signIn();
+  //     }else{
+  //       signUp();
+  //     }
+  //   }
+  // }
 
 
   return (

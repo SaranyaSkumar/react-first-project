@@ -17,7 +17,7 @@ const logout= () => {
 function Logout() {
     return (
         <div className='main-button'>
-            <Btn text='Sign Out' style='logout' logout={logout}/>
+            <Btn text='Sign Out' logout={logout}/>
         </div>
     )
 }
