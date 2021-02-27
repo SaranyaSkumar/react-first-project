@@ -4,6 +4,7 @@ import { useGoogleLogin } from 'react-google-login';
 const clientId="1041274157911-l87iirfdcmi51a8m5rj9m1ia0958qehr.apps.googleusercontent.com"
 
 function GoogleButton(props) {
+  
     const onSuccess =async (res) => {
         res= await res;
         console.log('Login Success: currentUser:', res.profileObj);
@@ -12,8 +13,6 @@ function GoogleButton(props) {
           props.isLoggedIn();
         }else{
           window.location.reload();
-          localStorage.setItem('user',JSON.stringify(res.profileObj));
-          props.isLoggedIn();
         }
       };
     
