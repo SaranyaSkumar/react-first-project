@@ -7,8 +7,11 @@ function GoogleButton(props) {
     const onSuccess =async (res) => {
         res= await res;
         console.log('Login Success: currentUser:', res.profileObj);
-        window.location.reload();
         if(res.profileObj && res.profileObj.hasOwnProperty('name')){
+          localStorage.setItem('user',JSON.stringify(res.profileObj));
+          props.isLoggedIn();
+        }else{
+          window.location.reload();
           localStorage.setItem('user',JSON.stringify(res.profileObj));
           props.isLoggedIn();
         }
