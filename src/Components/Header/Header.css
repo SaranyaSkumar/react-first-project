@@ -2,7 +2,7 @@
     padding: 3rem;
     /* background-color: #a0ddbb; */
     height: 5rem;
-    color: black;
+    color: #05386b;
 }
 
 .header-text-area {
@@ -27,6 +27,6 @@
 .name{
     font-family: system-ui;
     font-size: 17px;
-    color: black;
+    color: #05386b;
     margin-top: 8px;
 }

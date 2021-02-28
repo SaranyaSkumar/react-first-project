@@ -38,7 +38,7 @@
     font-size: 12px;
     padding: 5px 5px 5px 5px;
     border-radius: 23px;
-    background-color: white;
+    background-color: #edf5e1;
     border: none;
     width: 8rem;
     margin-top: 20%;
@@ -61,7 +61,7 @@
 }
 
 .option{
-    background-color: white;
+    background-color: #edf5e1;
 }
 
 .add-to-calender {
