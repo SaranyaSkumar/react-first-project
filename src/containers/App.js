@@ -24,10 +24,13 @@ const App = () => {
 
   //fetch tasks
   const fetchTasks = async () => {
-    const response = await fetch(env.baseUrl+'/tasks/get/tasks/all');
-    const final_data = await response.json();
-    if(final_data && final_data.data){
-      return final_data.data;
+    if(localStorage.getItem('user')){
+      let userId= JSON.parse(localStorage.getItem('user'))._id;
+      const response = await fetch(env.baseUrl+`/tasks/get/tasks/user?userId=${userId}`);
+      const final_data = await response.json();
+      if(final_data && final_data.data){
+        return final_data.data;
+      }
     }
   }
 
@@ -79,6 +82,7 @@ const App = () => {
 
   //add task
   const addTask = async (task) => {
+    task.userId=JSON.parse(localStorage.getItem('user'))._id;
     const response = await fetch(env.baseUrl+'/tasks/create/tasks', {
       method: 'POST',
       headers: {
@@ -88,7 +92,8 @@ const App = () => {
     });
     const data = await response.json();
     console.log("data",data)
-    setTasks([...tasks, data]);
+    if(tasks)  setTasks([...tasks, data]);
+    else setTasks([ data]);
     setShowAddTask(false);
     const server_tasks = await fetchTasks();
     setTasks(server_tasks)
@@ -131,36 +136,42 @@ const App = () => {
     }
   }
 
+  //GET USER 
   // const getUser = async (data) => {
-  //   const response = await fetch(env.baseUrl+'/users/get/byEmail', {
-  //     method: 'POST',
+  //   const response = await fetch(env.baseUrl+`/users/get/byEmail?payload=${data}`, {
+  //     method: 'GET',
   //     headers: {
-  //       'Content-type': 'application/json'
+  //       'Content-type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*'
   //     },
-  //     body: JSON.stringify(data)
+  //     // params: JSON.stringify(data)
   //   });
   //   const user_data = await response.json();
   //   return user_data;
   // }
 
-  // const signIn= async() => {
-    
-  // }
 
-  // const signUp= () => {
-  //   console.log("signup")
-  // }
+  const signUpUser=async () => {
+    console.log("signup")
+    let user= localStorage.getItem('user');
+    let user_data= await signUp(user);
+    console.log("user_data",user_data)
+  }
 
-  // const createUser = async(data) => {
-  //   let user= await getUser(data);
-  //   if(user && user.hasOwnProperty('message') && user.message=='success'){
-  //     if(user.data && user.data.length>0){
-  //       signIn();
-  //     }else{
-  //       signUp();
-  //     }
-  //   }
-  // }
+  const signUp = async(data) => {
+    try{
+      const response = await fetch(env.baseUrl+`/users/create?payload=${data}`, {
+        method: 'GET',
+      });
+      console.log("response",response);
+      const user_data = await response.json();
+      if(user_data && user_data.hasOwnProperty('message')&& user_data.message==='success'){
+        localStorage.setItem('user', JSON.stringify(user_data.data))
+      }
+    }catch(e){
+      console.log("error occured",e)
+    }
+  }
 
 
   return (
@@ -179,6 +190,7 @@ const App = () => {
         setShowAddTask={setShowAddTask} />
       </div>: 
       <MainLogin isLoggedIn={isLoggedIn}
+      signUpUser={signUpUser}
       />}
       
     </div>

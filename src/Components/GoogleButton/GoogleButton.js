@@ -11,6 +11,8 @@ function GoogleButton(props) {
         if(res.profileObj && res.profileObj.hasOwnProperty('name')){
           localStorage.setItem('user',JSON.stringify(res.profileObj));
           props.isLoggedIn();
+          // console.log("props",props)
+          props.signUpUser();
         }else{
           window.location.reload();
         }

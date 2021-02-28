@@ -11,7 +11,7 @@ function MainLogin(props) {
             <Row>
                <span className='to-continue'> To Continue..</span>
                 <Col>
-                <ButtonArea isLoggedIn={props.isLoggedIn}/>
+                <ButtonArea isLoggedIn={props.isLoggedIn} signUpUser={props.signUpUser}/>
                 </Col>
                 {/* <Col>
                 <ImageArea image={todoimg}/>

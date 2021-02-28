@@ -15,7 +15,7 @@ const Main = (props) => {
             {props.showUpdateTask && <UpdateTask taskToShow={props.onSelect} onUpdate={props.onUpdate}/>}
 
             {(!props.showAddTask && !props.showUpdateTask) && <div>
-                {props.tasks.length>0 ? (
+                {props.tasks&& props.tasks.length>0 ? (
                 <Manager tasks={props.tasks} 
                 onDelete={props.onDelete} 
                 onUpdate={props.onUpdate}
