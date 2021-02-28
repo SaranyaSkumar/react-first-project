@@ -166,7 +166,9 @@ const App = () => {
       console.log("response",response);
       const user_data = await response.json();
       if(user_data && user_data.hasOwnProperty('message')&& user_data.message==='success'){
-        localStorage.setItem('user', JSON.stringify(user_data.data))
+        localStorage.setItem('user', JSON.stringify(user_data.data));
+        const server_tasks = await fetchTasks();
+        setTasks(server_tasks)
       }
     }catch(e){
       console.log("error occured",e)
